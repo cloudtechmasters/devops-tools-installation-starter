@@ -1,0 +1,26 @@
+sudo amazon-linux-extras install epel -y
+sudo yum-config-manager --enable epel
+Install using the yum Package Manager on Amazon Linux
+Amazon Corretto 11 has a 'headless' variant available. This variant omits runtime dependencies that are typically associated with GUI applications such as X11 and ALSA and is worth considering for server-oriented workloads.
+
+Option 1: Install headless Amazon Corretto 11:
+
+sudo yum install java-11-amazon-corretto-headless
+Option 2: Install the full Amazon Corretto 11:
+
+sudo yum install java-11-amazon-corretto
+The installation location is /usr/lib/jvm/java-11-amazon-corretto.<cpu_arch>.
+Verify Your Installation
+To verify the installation, run java -version in a console. If the version string doesn't mention Corretto, run the following command to change the default java provider.
+
+sudo alternatives --config java
+
+Jenkins Redhat Packages
+
+sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+  sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+  
+If you've previously imported the key from Jenkins, the rpm --import will fail because you already have a key. Please ignore that and move on.
+
+
+  yum install jenkins
